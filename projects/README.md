@@ -31,6 +31,6 @@ projects/NN-お題名/
 
 | # | お題 | 種別 | 状態 |
 |---|---|---|---|
-| | | | |
+| 00 | [00-terraform-intro](00-terraform-intro/README.md) | Terraform構文導入 | 完了 |
 
 新しいお題を開始したら、この表に行を追加すること。
