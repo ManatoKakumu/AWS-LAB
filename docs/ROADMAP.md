@@ -10,7 +10,7 @@
 
 `01`以降は「設計レビュー→AWSコンソールで構築→同じ構成をTerraform化」の順で進める(`/start` Skillのフェーズ B→C→D に対応)。`00`のみアーキテクチャ設計を伴わない構文導入のため、設計レビューとAWS構築の手順を飛ばしてよい(`.claude/skills/start/SKILL.md`の例外規定)。
 
-- [ ] `projects/00-terraform-intro`: Terraformの構文に慣れるための最小導入(providerブロック、単一リソース(例: S3バケット1個)、`init/plan/apply/destroy`の一連の流れ)。この回だけは構文をメンターが例示してよい([MENTOR_RULES.md](MENTOR_RULES.md)の切り分けルール参照)
+- [x] `projects/00-terraform-intro`: Terraformの構文に慣れるための最小導入(providerブロック、単一リソース(例: S3バケット1個)、`init/plan/apply/destroy`の一連の流れ)。この回だけは構文をメンターが例示してよい([MENTOR_RULES.md](MENTOR_RULES.md)の切り分けルール参照)。2026-07-11完了。基礎フローに加え、IAM最小権限設計と`apply`長時間ハングの実地トラブルシューティングを経験した
 - [ ] `projects/01-vpc-network`: 設計済みのVPC(3層分離、2-3AZ、IGW、NAT Gateway、ルートテーブル)をAWSコンソールで構築後、Terraformでコード化。設計判断は本人が行う
 - [ ] `projects/02-nacl-experiment`: NACLを意図的に構成し、ステートレス挙動(エフェメラルポート)を実機で確認する
 - [ ] `projects/03-rds-scaling`: RDS Multi-AZ と リードレプリカを両方構築し、フェイルオーバー・レプリケーション遅延を実際に観察する
@@ -41,3 +41,4 @@
 ## 更新履歴
 
 - 2026-07-11: 初回評価結果をもとに作成
+- 2026-07-11: `00-terraform-intro`完了、チェックを入れた
