@@ -1,0 +1,27 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# .terraform.lock.hcl はあえて除外しない(再現性のためコミットする)
+
+# AWS
+.aws/
+
+# OS/Editor
+.DS_Store
+Thumbs.db
+*.swp
+
+# Claude Code ローカル設定(端末固有、共有不要)
+.claude/settings.local.json
