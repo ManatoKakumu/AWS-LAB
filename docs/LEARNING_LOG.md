@@ -26,3 +26,6 @@
 |---|---|---|
 | 2026-07-11 | 初回オンボーディング(評価・環境構築・Skill実装・レビュー) | [詳細](logs/2026-07-11-01-onboarding.md) |
 | 2026-07-11 | 00-terraform-intro(出題〜構築〜レビュー〜振り返り) | [詳細](logs/2026-07-11-02-terraform-intro-shudai.md) |
+| 2026-07-11 | 01-vpc-network(出題) | [詳細](logs/2026-07-11-03-vpc-network-shudai.md) |
+| 2026-07-12 | 01-vpc-network(設計レビュー〜AWS構築〜理解度テスト) | [詳細](logs/2026-07-12-01-vpc-network-construction.md) |
+| 2026-07-13 | 01-vpc-network(Terraform実装〜レビュー〜フェーズD完了) | [詳細](logs/2026-07-13-01-vpc-network-terraform.md) |
