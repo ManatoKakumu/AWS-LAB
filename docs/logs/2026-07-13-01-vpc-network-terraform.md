@@ -16,3 +16,16 @@
   - 改善が必要な点: ECS Service Auto Scalingが「1つのタスク内のコンテナ数」を増減させると誤解しており、「タスクとコンテナの関係」の曖昧さが再度表面化した(対話で修正)。実装面では、コピペ後の変更漏れ(ポート番号の一律コピペ、参照名の直し忘れ)が複数箇所で発生するパターンが見られ、セルフレビューの重要性を再確認する機会になった
 - CURRENT_LEVELへの反映: フェーズE(振り返り)完了時に正式反映予定
 - 次回への持ち越し: フェーズE(振り返り)から再開。module化/`for_each`によるリソース定義の抽象化、variable化によるハードコード(region、CIDR等)の解消は、次回以降のTerraform課題で扱う
+
+## 追記: フェーズE(振り返り)
+
+同一セッション内でフェーズEまで継続実施。
+
+- `01-vpc-network`全体を対象に口頭理解度テスト(全8問)を実施。NAT Gateway/IGWの違い、EIPの必要性、RDS Multi-AZの目的、タスク定義/タスク/Auto Scalingの関係は正確に回答できた
+- 一方で、Execution Role/Task Roleの「CloudWatch Logs書き込み担当」と、Fargateのターゲットタイプがip指定になる理由(EIPとプライベートIPの混同)は、今回のセッション中に一度説明済みにもかかわらず、テストで再度誤答した。それぞれ再度説明し、最終的には正しく整理できた
+- `RETROSPECTIVE.md`を対話しながら作成。「理解できていなかったことの整理ができずごちゃごちゃになっていた」という本人の自己評価があった
+- `CURRENT_LEVEL.md`を更新: NAT Gateway/IGW、EIP、ALB用語、ECSクラスター、Auto Scalingとタスクの関係、RDS Multi-AZの目的、tfstateと変数の違いを「理解できている」へ格上げ。ECS Execution/Task Roleのログ担当とFargateのip指定理由は「曖昧」に留め、継続フォロー対象と明記。「コピペ実装時の値の見直し漏れ」を新規の傾向として追加
+- `ROADMAP.md`を更新: `01-vpc-network`にチェック。`02`〜`04`の今後のお題に、今回判明した弱点(for_each/variable化の未経験、CloudWatch Logs担当の混同)を反映
+- `projects/README.md`の状態を「完了」に更新
+- 発見: 「同一セッション内で一度説明を受けて理解した」ことと「後のテストで再現できる」ことの間にギャップがあるという新しい学習傾向が明確になった。単発の説明では不十分で、間隔を空けた復習が必要な項目(Execution/Task Role、Fargateのip指定理由)として`CURRENT_LEVEL.md`に明記した
+- 次回への持ち越し: `02-nacl-experiment`から再開予定。次回はNACLに加え、`for_each`/`variable`によるTerraformコードの抽象化も扱う
