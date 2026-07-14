@@ -34,5 +34,6 @@ projects/NN-お題名/
 | 00 | [00-terraform-intro](00-terraform-intro/README.md) | Terraform構文導入 | 完了 |
 | 01 | [01-vpc-network](01-vpc-network/README.md) | VPCネットワーク設計 | 完了 |
 | 02 | [02-nacl-experiment](02-nacl-experiment/README.md) | NACLステートレス挙動の実験 | 完了 |
+| 03 | [03-rds-scaling](03-rds-scaling/README.md) | RDS Multi-AZ / リードレプリカ設計 | Terraform実装中 |
 
 新しいお題を開始したら、この表に行を追加すること。
