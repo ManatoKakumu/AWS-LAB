@@ -12,7 +12,7 @@
 
 - [x] `projects/00-terraform-intro`: Terraformの構文に慣れるための最小導入(providerブロック、単一リソース(例: S3バケット1個)、`init/plan/apply/destroy`の一連の流れ)。この回だけは構文をメンターが例示してよい([MENTOR_RULES.md](MENTOR_RULES.md)の切り分けルール参照)。2026-07-11完了。基礎フローに加え、IAM最小権限設計と`apply`長時間ハングの実地トラブルシューティングを経験した
 - [x] `projects/01-vpc-network`: 設計済みのVPC(3層分離、2-3AZ、IGW、NAT Gateway、ルートテーブル)をAWSコンソールで構築後、Terraformでコード化。設計判断は本人が行う。2026-07-13完了。ネットワーク基礎に加え、ALB/ECS/RDSを含む構成をTerraform化し、`terraform plan`まで検証した。module化/`for_each`/variable化は次のTerraform課題に持ち越し
-- [ ] `projects/02-nacl-experiment`: NACLを意図的に構成し、ステートレス挙動(エフェメラルポート)を実機で確認する。`01-vpc-network`で同一パターンのリソース(サブネット10個等)をすべて手打ちした経験を踏まえ、`for_each`/`variable`によるTerraformコードの抽象化もこの回で扱う
+- [x] `projects/02-nacl-experiment`: NACLを意図的に構成し、ステートレス挙動(エフェメラルポート)を実機で確認する。`01-vpc-network`で同一パターンのリソース(サブネット10個等)をすべて手打ちした経験を踏まえ、`for_each`/`variable`によるTerraformコードの抽象化もこの回で扱う。2026-07-13完了。NACLのステートレス挙動・エフェメラルポート・SG/NACLの許可拒否モデルの違いを理解し、`variable`/`locals`/`for_each`によるTerraform抽象化も実装。ただし`variable`/`locals`の使い分け自体はまだ曖昧で継続フォロー対象
 - [ ] `projects/03-rds-scaling`: RDS Multi-AZ と リードレプリカを両方構築し、フェイルオーバー・レプリケーション遅延を実際に観察する。Multi-AZの目的(高可用性)は`01-vpc-network`で理解済みのため、リードレプリカとの目的差分に焦点を当てる
 - [ ] `projects/04-ecs-iam-roles`: ECSのTask Role / Task Execution Roleを意図的に分離し、権限不足のエラーを実際に発生させて切り分ける。`01-vpc-network`で「CloudWatch Logsへの書き込み担当」を2回連続で誤答しているため、この論点は必ず出題に含める
 
@@ -43,3 +43,4 @@
 - 2026-07-11: 初回評価結果をもとに作成
 - 2026-07-11: `00-terraform-intro`完了、チェックを入れた
 - 2026-07-13: `01-vpc-network`完了、チェックを入れた。今後のお題(02〜04)に、今回判明した弱点(for_each/variable化の未経験、CloudWatch Logs書き込み担当の混同)を反映
+- 2026-07-13: `02-nacl-experiment`完了、チェックを入れた。`variable`/`locals`の使い分けが新たな弱点として判明したため、今後のTerraform課題で継続的に扱う
