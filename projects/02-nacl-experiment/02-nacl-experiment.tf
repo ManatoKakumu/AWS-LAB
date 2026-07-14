@@ -131,3 +131,51 @@ resource "aws_instance" "ec2" {
     Name = "ec2"
   }
 }
+
+resource "aws_network_acl" "success" {
+  vpc_id = aws_vpc.vpc.id
+}
+
+resource "aws_network_acl" "fail" {
+  vpc_id     = aws_vpc.vpc.id
+  subnet_ids = [aws_subnet.public.id]
+}
+
+variable "nacl_egress_rules" {
+  type = map(number)
+  default = {
+    success = 65535
+    fail    = 1023
+  }
+}
+
+locals {
+  nacl_ids = {
+    success = aws_network_acl.success.id
+    fail    = aws_network_acl.fail.id
+  }
+}
+
+resource "aws_network_acl_rule" "inbound" {
+  for_each = local.nacl_ids
+
+  network_acl_id = each.value
+  rule_number    = 100
+  protocol       = "-1"
+  rule_action    = "allow"
+  cidr_block     = "0.0.0.0/0"
+  egress         = false
+}
+
+resource "aws_network_acl_rule" "outbound" {
+  for_each = var.nacl_egress_rules
+
+  network_acl_id = local.nacl_ids[each.key]
+  rule_number    = 100
+  protocol       = "tcp"
+  rule_action    = "allow"
+  cidr_block     = "0.0.0.0/0"
+  from_port      = 0
+  to_port        = each.value
+  egress         = true
+}

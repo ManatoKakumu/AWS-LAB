@@ -105,8 +105,7 @@ echo "test" > /var/www/html/index.html
 - 実機で構築し、検証シナリオ5ステップをすべて確認後、リソースは破棄済み
 
 ### Terraform実装
-- VPC/Subnet/ルートテーブル/SG/EC2(public部分)は実装完了。applyで起動して動作確認後、destroy済
-- NACL(`experiment-success`/`experiment-fail`相当、`variable`/`for_each`で抽象化)は未実装。次回続きから
+- 実装完了。applyで起動して動作確認後、destroy済
 
 ## わからなかったこと・迷ったこと
 - SGは許可ベースのルールしか追加できない部分があいまいだった

@@ -33,3 +33,5 @@
 | 2026-07-13 | 02-nacl-experiment(設計レビュー) | [詳細](logs/2026-07-13-03-nacl-experiment-design-review.md) |
 | 2026-07-13 | 02-nacl-experiment(AWSコンソール構築〜実機検証) | [詳細](logs/2026-07-13-04-nacl-experiment-construction.md) |
 | 2026-07-13 | 02-nacl-experiment(Terraform実装、public部分まで) | [詳細](logs/2026-07-13-05-nacl-experiment-terraform.md) |
+| 2026-07-13 | 02-nacl-experiment(Terraform実装NACL部分〜Terraformレビュー完了) | [詳細](logs/2026-07-13-06-nacl-experiment-terraform-nacl.md) |
+| 2026-07-13 | 02-nacl-experiment(振り返り、フェーズE完了) | [詳細](logs/2026-07-13-07-nacl-experiment-retrospective.md) |
