@@ -35,3 +35,6 @@
 | 2026-07-13 | 02-nacl-experiment(Terraform実装、public部分まで) | [詳細](logs/2026-07-13-05-nacl-experiment-terraform.md) |
 | 2026-07-13 | 02-nacl-experiment(Terraform実装NACL部分〜Terraformレビュー完了) | [詳細](logs/2026-07-13-06-nacl-experiment-terraform-nacl.md) |
 | 2026-07-13 | 02-nacl-experiment(振り返り、フェーズE完了) | [詳細](logs/2026-07-13-07-nacl-experiment-retrospective.md) |
+| 2026-07-14 | 03-rds-scaling(出題) | [詳細](logs/2026-07-14-01-rds-scaling-shudai.md) |
+| 2026-07-14 | 03-rds-scaling(AWSコンソール構築〜実機確認〜フェーズC完了) | [詳細](logs/2026-07-14-02-rds-scaling-construction.md) |
+| 2026-07-16 | 03-rds-scaling(Terraform実装〜レビュー〜apply確認〜振り返り、フェーズE完了) | [詳細](logs/2026-07-16-01-rds-scaling-terraform.md) |
