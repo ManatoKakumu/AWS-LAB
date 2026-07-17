@@ -38,3 +38,5 @@
 | 2026-07-14 | 03-rds-scaling(出題) | [詳細](logs/2026-07-14-01-rds-scaling-shudai.md) |
 | 2026-07-14 | 03-rds-scaling(AWSコンソール構築〜実機確認〜フェーズC完了) | [詳細](logs/2026-07-14-02-rds-scaling-construction.md) |
 | 2026-07-16 | 03-rds-scaling(Terraform実装〜レビュー〜apply確認〜振り返り、フェーズE完了) | [詳細](logs/2026-07-16-01-rds-scaling-terraform.md) |
+| 2026-07-16 | 04-ecs-iam-roles(出題) | [詳細](logs/2026-07-16-02-ecs-iam-roles-shudai.md) |
+| 2026-07-17 | 04-ecs-iam-roles(設計レビュー、フェーズB完了) | [詳細](logs/2026-07-17-01-ecs-iam-roles-design-review.md) |
