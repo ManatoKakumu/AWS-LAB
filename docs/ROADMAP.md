@@ -4,7 +4,7 @@
 
 優先順位の原則: CURRENT_LEVELで「曖昧」「ほぼ理解できていない」に分類された項目を優先する。「理解できている」項目は基礎確認程度に留め、深追いしない。
 
-## Phase 1: 弱点補強 + IaC基礎(現在地)
+## Phase 1: 弱点補強 + IaC基礎(2026-07-19完了)
 
 ネットワーク・DB・IAMの「目的差分」の弱点を、Terraformで実際に手を動かしながら固める。方針は[MENTOR_RULES.md](MENTOR_RULES.md)のガードレール通り、**plan中心・applyは要所のみ・apply後は必ずdestroy**。
 
@@ -14,9 +14,9 @@
 - [x] `projects/01-vpc-network`: 設計済みのVPC(3層分離、2-3AZ、IGW、NAT Gateway、ルートテーブル)をAWSコンソールで構築後、Terraformでコード化。設計判断は本人が行う。2026-07-13完了。ネットワーク基礎に加え、ALB/ECS/RDSを含む構成をTerraform化し、`terraform plan`まで検証した。module化/`for_each`/variable化は次のTerraform課題に持ち越し
 - [x] `projects/02-nacl-experiment`: NACLを意図的に構成し、ステートレス挙動(エフェメラルポート)を実機で確認する。`01-vpc-network`で同一パターンのリソース(サブネット10個等)をすべて手打ちした経験を踏まえ、`for_each`/`variable`によるTerraformコードの抽象化もこの回で扱う。2026-07-13完了。NACLのステートレス挙動・エフェメラルポート・SG/NACLの許可拒否モデルの違いを理解し、`variable`/`locals`/`for_each`によるTerraform抽象化も実装。ただし`variable`/`locals`の使い分け自体はまだ曖昧で継続フォロー対象
 - [x] `projects/03-rds-scaling`: RDS Multi-AZ と リードレプリカを両方構築し、フェイルオーバー・レプリケーション遅延を実際に観察する。Multi-AZの目的(高可用性)は`01-vpc-network`で理解済みのため、リードレプリカとの目的差分に焦点を当てる。2026-07-16完了。目的差分の理解に加え、`for_each`の判断基準(役割ベース)、SGのポート範囲の意味、メンターの誤りを批判的に検証する力を確認した
-- [ ] `projects/04-ecs-iam-roles`: ECSのTask Role / Task Execution Roleを意図的に分離し、権限不足のエラーを実際に発生させて切り分ける。`01-vpc-network`で「CloudWatch Logsへの書き込み担当」を2回連続で誤答しているため、この論点は必ず出題に含める
+- [x] `projects/04-ecs-iam-roles`: ECSのTask Role / Task Execution Roleを意図的に分離し、権限不足のエラーを実際に発生させて切り分ける。`01-vpc-network`で「CloudWatch Logsへの書き込み担当」を2回連続で誤答しているため、この論点は必ず出題に含める。2026-07-19完了。管理ポリシー不使用でのカスタム最小権限設計、実機での意図的な権限剥奪とエラーメッセージからの切り分けを達成し、継続フォロー中だった論点を解消した
 
-## Phase 2: 可用性・スケーラビリティの実践
+## Phase 2: 可用性・スケーラビリティの実践(現在地)
 
 - [ ] Auto Scaling(ECSサービス/ASG)の実装とスケーリングポリシー設計
 - [ ] ALBのヘルスチェック設計、複数AZでの障害シミュレーション
@@ -45,3 +45,4 @@
 - 2026-07-13: `01-vpc-network`完了、チェックを入れた。今後のお題(02〜04)に、今回判明した弱点(for_each/variable化の未経験、CloudWatch Logs書き込み担当の混同)を反映
 - 2026-07-13: `02-nacl-experiment`完了、チェックを入れた。`variable`/`locals`の使い分けが新たな弱点として判明したため、今後のTerraform課題で継続的に扱う
 - 2026-07-16: `03-rds-scaling`完了、チェックを入れた。「コピペ実装時の値の見直し漏れ」が3回連続で発生しているため、`04`以降も引き続き明示的にフォローする
+- 2026-07-19: `04-ecs-iam-roles`完了、チェックを入れた。Phase 1(弱点補強+IaC基礎)が全項目完了したため、現在地をPhase 2(可用性・スケーラビリティの実践)に移す。HTTP/HTTPSの区別・`variable`/`locals`の使い分けは継続フォロー中(CURRENT_LEVEL.md参照)のため、Phase 2以降の出題でも意識する
