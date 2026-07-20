@@ -36,5 +36,6 @@ projects/NN-お題名/
 | 02 | [02-nacl-experiment](02-nacl-experiment/README.md) | NACLステートレス挙動の実験 | 完了 |
 | 03 | [03-rds-scaling](03-rds-scaling/README.md) | RDS Multi-AZ / リードレプリカ設計 | 完了 |
 | 04 | [04-ecs-iam-roles](04-ecs-iam-roles/README.md) | ECS Task Role / Task Execution Role分離 | 完了 |
+| 05 | [05-ecs-autoscaling](05-ecs-autoscaling/README.md) | ECS Service Auto Scaling / ALBヘルスチェック設計 | AWS構築中 |
 
 新しいお題を開始したら、この表に行を追加すること。

@@ -42,3 +42,5 @@
 | 2026-07-17 | 04-ecs-iam-roles(設計レビュー、フェーズB完了) | [詳細](logs/2026-07-17-01-ecs-iam-roles-design-review.md) |
 | 2026-07-19 | 04-ecs-iam-roles(AWSコンソール構築〜実機確認〜Terraform実装、フェーズD完了) | [詳細](logs/2026-07-19-01-ecs-iam-roles-construction-terraform.md) |
 | 2026-07-19 | 04-ecs-iam-roles(振り返り、フェーズE完了) | [詳細](logs/2026-07-19-02-ecs-iam-roles-retrospective.md) |
+| 2026-07-19 | 05-ecs-autoscaling(出題) | [詳細](logs/2026-07-19-03-ecs-autoscaling-shudai.md) |
+| 2026-07-20 | 05-ecs-autoscaling(設計レビュー、フェーズB完了) | [詳細](logs/2026-07-20-01-ecs-autoscaling-design-review.md) |
