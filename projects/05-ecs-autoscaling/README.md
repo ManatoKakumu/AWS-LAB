@@ -27,10 +27,10 @@ Application Auto Scalingには大きく2種類のポリシーがあります。
 
 ## 環境情報
 
-- Terraformバージョン:
-- AWSプロバイダーバージョン:
+- Terraformバージョン:v1.15.4
+- AWSプロバイダーバージョン:v5.100.0
 - リージョン: ap-northeast-1(既定。変更した場合はここに明記)
-- AWSリソースの状態(コンソール構築分): 未構築 / 構築中(課金あり) / 破棄済み
+- AWSリソースの状態(コンソール構築分): 破棄済み
 - Terraformの状態: plan止まり / apply後destroy済み
 
 ## 設計
@@ -169,6 +169,7 @@ Application Auto Scalingには大きく2種類のポリシーがあります。
 ## 実装
 
 ### AWSコンソールでの構築記録
+- 設計図通りに構築、スケールアウト・インの挙動を確認
 
 ### Terraform実装
 

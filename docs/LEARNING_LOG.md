@@ -44,3 +44,4 @@
 | 2026-07-19 | 04-ecs-iam-roles(振り返り、フェーズE完了) | [詳細](logs/2026-07-19-02-ecs-iam-roles-retrospective.md) |
 | 2026-07-19 | 05-ecs-autoscaling(出題) | [詳細](logs/2026-07-19-03-ecs-autoscaling-shudai.md) |
 | 2026-07-20 | 05-ecs-autoscaling(設計レビュー、フェーズB完了) | [詳細](logs/2026-07-20-01-ecs-autoscaling-design-review.md) |
+| 2026-07-22 | 05-ecs-autoscaling(AWSコンソール構築〜実機負荷試験〜フェーズC完了) | [詳細](logs/2026-07-22-01-ecs-autoscaling-construction.md) |
