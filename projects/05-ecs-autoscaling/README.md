@@ -31,7 +31,7 @@ Application Auto Scalingには大きく2種類のポリシーがあります。
 - AWSプロバイダーバージョン:v5.100.0
 - リージョン: ap-northeast-1(既定。変更した場合はここに明記)
 - AWSリソースの状態(コンソール構築分): 破棄済み
-- Terraformの状態: plan止まり / apply後destroy済み
+- Terraformの状態: apply後destroy済み(2026-07-23。CLIで残存リソースなしを確認済み)
 
 ## 設計
 
@@ -172,6 +172,8 @@ Application Auto Scalingには大きく2種類のポリシーがあります。
 - 設計図通りに構築、スケールアウト・インの挙動を確認
 
 ### Terraform実装
+
+`05-ecs-autoscaling.tf`に実装。VPC/サブネット(`for_each`によるALBサブネットの複数AZ展開)/ルートテーブル/IGW/NAT Gateway/SG/IAM(`locals`によるトラストポリシー共通化)/ALB/ECS(タスク定義・Service)/Application Auto Scaling(ターゲット追跡ポリシー)を一通り実装。`terraform validate`/`plan`/`apply`まで成功し、動作確認後`destroy`。レビュー詳細は[REVIEW.md](REVIEW.md)の「2026-07-23 Terraformレビュー」を参照。
 
 ## わからなかったこと・迷ったこと
 - ALBRequestCountPerTargetについて
