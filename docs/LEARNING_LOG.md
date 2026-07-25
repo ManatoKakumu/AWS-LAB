@@ -46,3 +46,5 @@
 | 2026-07-20 | 05-ecs-autoscaling(設計レビュー、フェーズB完了) | [詳細](logs/2026-07-20-01-ecs-autoscaling-design-review.md) |
 | 2026-07-22 | 05-ecs-autoscaling(AWSコンソール構築〜実機負荷試験〜フェーズC完了) | [詳細](logs/2026-07-22-01-ecs-autoscaling-construction.md) |
 | 2026-07-23 | 05-ecs-autoscaling(Terraform実装〜レビュー〜apply確認〜振り返り、フェーズE完了) | [詳細](logs/2026-07-23-01-ecs-autoscaling-terraform.md) |
+| 2026-07-23 | 06-multi-az-failure-simulation(出題) | [詳細](logs/2026-07-23-02-multi-az-failure-simulation-shudai.md) |
+| 2026-07-25 | 06-multi-az-failure-simulation(設計レビュー、フェーズB完了) | [詳細](logs/2026-07-25-01-multi-az-failure-simulation-design-review.md) |

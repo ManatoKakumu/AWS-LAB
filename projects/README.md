@@ -37,5 +37,6 @@ projects/NN-お題名/
 | 03 | [03-rds-scaling](03-rds-scaling/README.md) | RDS Multi-AZ / リードレプリカ設計 | 完了 |
 | 04 | [04-ecs-iam-roles](04-ecs-iam-roles/README.md) | ECS Task Role / Task Execution Role分離 | 完了 |
 | 05 | [05-ecs-autoscaling](05-ecs-autoscaling/README.md) | ECS Service Auto Scaling / ALBヘルスチェック設計 | 完了 |
+| 06 | [06-multi-az-failure-simulation](06-multi-az-failure-simulation/README.md) | 複数AZでの障害シミュレーション | AWS構築中 |
 
 新しいお題を開始したら、この表に行を追加すること。
