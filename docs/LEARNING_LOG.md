@@ -48,4 +48,4 @@
 | 2026-07-23 | 05-ecs-autoscaling(Terraform実装〜レビュー〜apply確認〜振り返り、フェーズE完了) | [詳細](logs/2026-07-23-01-ecs-autoscaling-terraform.md) |
 | 2026-07-23 | 06-multi-az-failure-simulation(出題) | [詳細](logs/2026-07-23-02-multi-az-failure-simulation-shudai.md) |
 | 2026-07-25 | 06-multi-az-failure-simulation(設計レビュー、フェーズB完了) | [詳細](logs/2026-07-25-01-multi-az-failure-simulation-design-review.md) |
-| 2026-07-27 | 06-multi-az-failure-simulation(Terraform実装〜レビュー〜apply/destroy確認、フェーズD完了) | [詳細](logs/2026-07-27-01-multi-az-failure-simulation-terraform.md) |
+| 2026-07-27 | 06-multi-az-failure-simulation(Terraform実装〜レビュー〜apply/destroy確認〜振り返り、フェーズD・E完了) | [詳細](logs/2026-07-27-01-multi-az-failure-simulation-terraform.md) |
