@@ -1,0 +1,7 @@
+# 2026-07-27: 06-multi-az-failure-simulation(Terraform実装〜レビュー〜apply/destroy確認、フェーズD完了)
+
+- 種別: 実装課題(Terraform)/ トラブルシューティング
+- 内容: `06-multi-az-failure-simulation`のTerraformコードをNACL/SG/ルートテーブル/IAM→ALB→ECSの順にセクションごとに提出してもらいレビューした。指摘は2件: (1)`aws_network_acl`の`subnet_ids`で`for_each`リソースをキー指定なしで参照する構文誤り(`03-rds-scaling`で一度指摘済みの論点の再発。今回は「わからない」と正直に表明した上で`aws_subnet.ecs["az2"].id`という正しい構文を一度で習得)、(2)`aws_ecs_service`の`network_configuration.subnets`が`aws_lb.alb`のブロックをコピーした際の書き換え漏れで`aws_subnet.alb`を参照していた(指摘した瞬間に自分で「コピペ時の修正忘れ」と診断できた)。`terraform plan`は`36 to add, 0 to change, 0 to destroy`で一発成功。その後`apply`し、AWS CLIで正常系(両AZへの均等分散)を確認 → 異常系NACLを有効化して再`apply`し障害注入 → README.mdの予測(ALBが約30秒で異常検知、ECSは障害AZへの配置を諦めず繰り返し試行)が的中することをAWS CLIで確認 → `destroy`まで完遂し、全リソースの削除もAWS CLIで確認した。さらに、AWSコンソール構築時に「原因未解明」だった「AZタスクの偏り(2:2→3:1で固定)」について、`terraform plan`に表示された`availability_zone_rebalancing = "DISABLED"`という属性名をきっかけに、AWS CLIで取得したタスクの時系列データ(STOPPEDタスク14件すべてが障害注入AZに集中)から、「新規タスク配置は現在の実行数が少ないAZを優先する」という一貫した仮説に本人主導で到達できた
+- 発見: 良かった点は、(a)過去に指摘された構文の再発時に「わからない」と隠さず表明し、一度の説明で正しく適用できたこと、(b)コピペミスを指摘された瞬間に自己診断できたこと(`05`の振り返りで合意した「見直し習慣」が実際に機能している最初の実例)、(c)AWS CLIの生データ(タイムスタンプ・AZ・stoppedReason)から仮説を組み立てる過程で、いったん「ログだけでは推測できない」と諦めかけたが、対話を通じて「3:1で固定される理由」と「4:0にならない理由」が同一のルールで説明できることに自力で気づけたこと。改善が必要な点は特になし(今回のTerraform実装フェーズでは新規の弱点は見られなかった)
+- CURRENT_LEVELへの反映: なし(振り返り時にまとめて反映する)
+- 次回への持ち越し: 振り返り(RETROSPECTIVE.md作成、フェーズE)に進む。ALB/ECSサービス/Auto Scalingの役割分担が日をまたいで定着しているかの記録を見ない理解度チェックは今回のセッション内で実施予定

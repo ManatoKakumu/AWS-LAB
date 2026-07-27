@@ -79,7 +79,32 @@
 
 ### 次のアクション
 
-- [ ] AWSコンソールでの構築に進む
-- [ ] 構築時、`enable_execute_command`を`false`にすることを忘れない
-- [ ] 障害注入(NACL付け替え)を実施し、README.mdの予測(30秒程度でのALB異常検知、ECSサービスが障害AZへの配置を繰り返し試みる)と実際の挙動を比較する
+- [x] AWSコンソールでの構築に進む
+- [x] 構築時、`enable_execute_command`を`false`にすることを忘れない
+- [x] 障害注入(NACL付け替え)を実施し、README.mdの予測(30秒程度でのALB異常検知、ECSサービスが障害AZへの配置を繰り返し試みる)と実際の挙動を比較する
 - [ ] 構築後の振り返りで、ALB/ECSサービス/Auto Scalingの役割分担が日をまたいで定着しているか、記録を見ない理解度チェックで確認する
+
+## Terraformレビュー(2026-07-27)
+
+### 総評
+
+コードの完成度は高く、指摘は2件のみだった。1件は過去に指摘済みの構文(`for_each`リソースからの単一要素参照)の再発、もう1件は`01`から継続する「コピペ時の見直し漏れ」パターンの新しい発生箇所(ECSサービスの`network_configuration.subnets`がALB用サブネットを参照していた)。いずれも指摘後、自力で正しく修正できた。`terraform plan`は一発で意図通りの結果(`36 to add, 0 to change, 0 to destroy`)になり、設計との食い違いはなかった。
+
+### 指摘内容
+
+1. **`aws_network_acl.abnormality`の`subnet_ids`参照(`for_each`の単一要素参照)**: `aws_subnet.ecs.id`という、`for_each`で作られたマップに対してキー指定なしで`.id`を参照する誤りがあった。`03-rds-scaling`で一度指摘した論点の再発。今回は「わからない」と正直に表明した上で、`aws_subnet.ecs["az2"].id`という正しい構文を一度で理解・適用できた
+2. **`aws_ecs_service.nginx`の`network_configuration.subnets`が`aws_subnet.alb`を参照**: `aws_lb.alb`の`subnets`ブロックをコピーした際の書き換え漏れ。指摘した瞬間に「コピペ時の修正忘れ」と自己診断できており、`05`の振り返りで合意した「見直しの習慣」が実際に機能していることが確認できた
+
+### 実験・検証
+
+- `terraform apply`で正常系(両AZにタスク分散)をAWS CLIで確認 → 異常系NACLを有効化して再`apply`し、障害注入 → `terraform destroy`で全リソース削除をAWS CLIで確認、という一連の流れを完遂
+- 障害注入後、ALBターゲットグループのヘルスチェックとECSサービスイベントをAWS CLIで観察し、README.mdの予測(ALBが約30秒で異常検知、ECSは障害AZへの配置を諦めず繰り返し試行する)が的中したことを確認
+- AWSコンソール構築時に「原因未解明」として持ち越されていた「AZタスクの偏り(2:2→3:1への固定化)」について、`terraform plan`に表示された`aws_ecs_service`のデフォルト属性`availability_zone_rebalancing = "DISABLED"`をきっかけに調査を実施。AWS CLIで取得したタスクの時系列データ(`STOPPED`タスク14件すべてが障害注入AZに集中している等)から、「新規タスク配置は現在の実行数が少ないAZを優先する」という一貫した説明が可能な仮説に到達した。前回セッションからの持ち越し課題を解消できた
+
+### Terraform化した場合の改善点
+
+- 特になし。ベストプラクティスに沿った最小権限IAM、`for_each`によるサブネット定義、`jsonencode`内のcamelCase(`portMappings`)など、過去の指摘事項が今回は再発しなかった
+
+### 次のアクション
+
+- [ ] 振り返り(RETROSPECTIVE.md作成)
