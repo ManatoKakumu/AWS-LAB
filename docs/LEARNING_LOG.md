@@ -49,4 +49,5 @@
 | 2026-07-23 | 06-multi-az-failure-simulation(出題) | [詳細](logs/2026-07-23-02-multi-az-failure-simulation-shudai.md) |
 | 2026-07-25 | 06-multi-az-failure-simulation(設計レビュー、フェーズB完了) | [詳細](logs/2026-07-25-01-multi-az-failure-simulation-design-review.md) |
 | 2026-07-27 | 06-multi-az-failure-simulation(Terraform実装〜レビュー〜apply/destroy確認〜振り返り、フェーズD・E完了) | [詳細](logs/2026-07-27-01-multi-az-failure-simulation-terraform.md) |
+| 2026-07-29 | 07-elasticache-caching(設計レビュー、フェーズB完了) | [詳細](logs/2026-07-29-01-elasticache-caching-design-review.md) |
 | 2026-07-27 | 07-elasticache-caching(出題) | [詳細](logs/2026-07-27-02-elasticache-caching-shudai.md) |
