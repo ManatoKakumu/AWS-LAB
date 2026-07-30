@@ -51,3 +51,4 @@
 | 2026-07-27 | 06-multi-az-failure-simulation(Terraform実装〜レビュー〜apply/destroy確認〜振り返り、フェーズD・E完了) | [詳細](logs/2026-07-27-01-multi-az-failure-simulation-terraform.md) |
 | 2026-07-29 | 07-elasticache-caching(設計レビュー、フェーズB完了) | [詳細](logs/2026-07-29-01-elasticache-caching-design-review.md) |
 | 2026-07-27 | 07-elasticache-caching(出題) | [詳細](logs/2026-07-27-02-elasticache-caching-shudai.md) |
+| 2026-07-30 | 07-elasticache-caching(AWSコンソール構築〜フェーズC完了) | [詳細](logs/2026-07-30-01-elasticache-caching-construction.md) |
